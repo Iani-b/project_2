@@ -19,23 +19,23 @@ signup_submit.addEventListener("click", async(event) => {
 
     const result = await response.json()
 
-    if (result.message.includes("Username cannot be blank")) {
+    if (result.type.includes("invalid_username")) {
          document.getElementById("warning1").textContent = result.message;
          document.getElementById("warning1").classList.add("show_warning");
     }    
-    else if (result.message.includes("Username already exists")) {
+    else if (result.type.includes("existing_username")) {
         document.getElementById("warning1").textContent = result.message;
         document.getElementById("warning1").classList.add("show_warning");
     }
-    else if (result.message.includes("Passwords do not match")) {
+    else if (result.type.includes("different_passwords")) {
         document.getElementById("warning1").textContent = result.message;
         document.getElementById("warning1").classList.add("show_warning");
     }
-    else if (result.message.includes("Password must be at least 6 characters long")) {
+    else if (result.type.includes("invalid_password")) {
         document.getElementById("warning1").textContent = result.message;
         document.getElementById("warning1").classList.add("show_warning");
     }
-    else if (result.message.includes("Signup successful")) {
+    else if (result.type.includes("signup_success")) {
         document.getElementById("warning1").classList.remove("show_warning");
         window.location.href = "/game";
         }
