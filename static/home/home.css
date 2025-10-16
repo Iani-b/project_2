@@ -45,22 +45,6 @@ body {
     margin-top: 16px;
 }
 
-.success {
-    display: none;
-    color: #2fd337;
-    font-weight: 600;
-    font-size: 14px;
-    background-color: #ffebee;
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: 1px solid #9aefac;
-    margin-top: 16px;
-}
-
-.show_success.success {
-    display: block;
-}
-
 .show_warning.warning {
     display: block;
 }

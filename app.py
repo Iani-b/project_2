@@ -1,8 +1,19 @@
-from flask import Flask, render_template, jsonify, request, redirect
+from flask import Flask, render_template, jsonify, request, redirect, session
 import os
 import time
 import json
 import random
+
+############################################################
+
+app = Flask(__name__)
+app.secret_key = "061338181229718256217153"
+
+##########################################################
+
+def logged_in():
+    return 'username' in session
+
 
 def load_users():
     if os.path.exists("users.json"):
@@ -15,14 +26,15 @@ def load_users():
     else:
         print("users.json not found")
         with open("users.json", "w") as user_json:
-            json.dump({}, user_json)
+            json.dump({}, user_json, indent = 4)
         return {}
+    
     
 def save_user(users):
     with open("users.json", "w") as user_json:
-        json.dump(users, user_json)
+        json.dump(users, user_json, indent = 4)
 
-app = Flask(__name__)
+##########################################################
 
 @app.route("/")
 def home():
@@ -53,16 +65,20 @@ def signup():
     
     users_json[username] = {"password": password1}
     save_user(users_json)
+
+    session["username"] = username
+
     return jsonify({"message": "Signup successful"})
 
-@app.route("/login")
+@app.route("/login", methods = ["POST"])
 def login():
-    
     pass
 
-@app.route("/game", methods = ["POST"])
+@app.route("/game")
 def game():
-    
-    pass
+    if not logged_in():
+        return redirect("/")
+ 
+    return render_template("game.html")
 
 app.run(debug=True)

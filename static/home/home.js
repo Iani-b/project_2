@@ -1,5 +1,4 @@
-const signup_submit = document.getElementById("signup_submit")
-const login_submit = document.getElementById("login_submit")
+const signup_submit = document.getElementById("signup_submit");
 
 signup_submit.addEventListener("click", async(event) => {
     event.preventDefault();
@@ -22,27 +21,24 @@ signup_submit.addEventListener("click", async(event) => {
 
     if (result.message.includes("Username cannot be blank")) {
          document.getElementById("warning1").textContent = result.message;
-         document.getElementById("success1").classList.remove("show_success");
          document.getElementById("warning1").classList.add("show_warning");
     }    
     else if (result.message.includes("Username already exists")) {
         document.getElementById("warning1").textContent = result.message;
-        document.getElementById("success1").classList.remove("show_success");
         document.getElementById("warning1").classList.add("show_warning");
     }
     else if (result.message.includes("Passwords do not match")) {
         document.getElementById("warning1").textContent = result.message;
-        document.getElementById("success1").classList.remove("show_success");
         document.getElementById("warning1").classList.add("show_warning");
     }
     else if (result.message.includes("Password must be at least 6 characters long")) {
         document.getElementById("warning1").textContent = result.message;
-        document.getElementById("success1").classList.remove("show_success");
         document.getElementById("warning1").classList.add("show_warning");
     }
     else if (result.message.includes("Signup successful")) {
-        document.getElementById("success1").textContent = result.message;
         document.getElementById("warning1").classList.remove("show_warning");
-        document.getElementById("success1").classList.add("show_success");
+        window.location.href = "/game";
         }
 })
+
+const login_submit = document.getElementById("login_submit")
