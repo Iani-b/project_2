@@ -3,6 +3,9 @@ const signup_submit = document.getElementById("signup_submit");
 signup_submit.addEventListener("click", async(event) => {
     event.preventDefault();
 
+    document.getElementById("info").classList.remove("warning", "success");
+    document.getElementById("info").textContent = "";
+
     const signup_username = document.getElementById("signupUsername").value.trim();
     const signup_password1 = document.getElementById("signupPassword1").value;
     const signup_password2 = document.getElementById("signupPassword2").value;
@@ -18,27 +21,29 @@ signup_submit.addEventListener("click", async(event) => {
     })
 
     const result = await response.json()
-
-    if (result.type.includes("invalid_username")) {
-         document.getElementById("warning1").textContent = result.message;
-         document.getElementById("warning1").classList.add("show_warning");
-    }    
-    else if (result.type.includes("existing_username")) {
-        document.getElementById("warning1").textContent = result.message;
-        document.getElementById("warning1").classList.add("show_warning");
-    }
-    else if (result.type.includes("different_passwords")) {
-        document.getElementById("warning1").textContent = result.message;
-        document.getElementById("warning1").classList.add("show_warning");
-    }
-    else if (result.type.includes("invalid_password")) {
-        document.getElementById("warning1").textContent = result.message;
-        document.getElementById("warning1").classList.add("show_warning");
-    }
-    else if (result.type.includes("signup_success")) {
-        document.getElementById("warning1").classList.remove("show_warning");
-        window.location.href = "/game";
+    
+    setTimeout(() => {                                     /* Like time.sleep(), in ms, makes sure animation loads */
+        if (result.type.includes("invalid_username")) {
+         document.getElementById("info").textContent = result.message;
+         document.getElementById("info").classList.add("warning");
+        }    
+        else if (result.type.includes("existing_username")) {
+            document.getElementById("info").textContent = result.message;
+            document.getElementById("info").classList.add("warning");
         }
+        else if (result.type.includes("different_passwords")) {
+            document.getElementById("info").textContent = result.message;
+            document.getElementById("info").classList.add("warning");
+        }
+        else if (result.type.includes("invalid_password")) {
+            document.getElementById("info").textContent = result.message;
+            document.getElementById("info").classList.add("warning");
+        }
+        else if (result.type.includes("signup_success")) {
+            document.getElementById("info").textContent = result.message;
+            document.getElementById("info").classList.add("success");
+        }
+    }, 10)
 })
 
 const login_submit = document.getElementById("login_submit")

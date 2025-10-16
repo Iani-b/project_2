@@ -84,7 +84,7 @@ def login():
     
     pass
 
-@app.route("/game")
+@app.route("/game")   #do dashboard instead
 def game():
 
     if not logged_in():
