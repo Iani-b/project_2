@@ -18,7 +18,7 @@ def load_users():
             json.dump({}, user_json)
         return {}
     
-def save_users(users):
+def save_user(users):
     with open("users.json", "w") as user_json:
         json.dump(users, user_json)
 
@@ -39,6 +39,9 @@ def signup():
 
     users_json = load_users()
 
+    if not username:
+        return jsonify({"message": "Username cannot be blank"})
+
     if username in users_json:
         return jsonify({"message": "Username already exists"})
     
@@ -49,6 +52,7 @@ def signup():
         return jsonify({"message": "Password must be at least 6 characters long"})
     
     users_json[username] = {"password": password1}
+    save_user(users_json)
     return jsonify({"message": "Signup successful"})
 
 @app.route("/login")
