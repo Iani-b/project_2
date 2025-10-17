@@ -44,7 +44,7 @@ def save_user(users):
 
 ##########################################################
 
-@app.route("/")
+@app.route("/")         ##login and signup page##--------------------------------------
 def home():
     
     return render_template("home.html")
@@ -82,15 +82,30 @@ def signup():
 @app.route("/login", methods = ["POST"])
 def login():
     
-    pass
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
 
-@app.route("/game")   #do dashboard instead
+    with file_lock:
+        users_json = load_users()
+
+        if username not in users_json:
+            return jsonify({"message": "Username Does Not Exist", "type": "invalid_username"})
+        
+        if password != users_json[username]["password"]:
+            return jsonify({"message": "Incorrect Password", "type": "invalid_password"})
+        
+    session["username"] = username
+
+    return jsonify({"message": "Login successful", "type": "login_success"})
+        
+@app.route("/dashboard")   ##game page##---------------------------------------------------------------------------
 def game():
 
     if not logged_in():
         return redirect("/")
  
-    return render_template("game.html")
+    return render_template("dashboard.html")
 
 ##############################################################
 

@@ -59,9 +59,30 @@ login_submit.addEventListener("click", async(event) => {
 
     const response = await fetch("/login", {
         method: "POST",
-        /*finish*/
-
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            "username": login_username,
+            "password": login_password,
+        })
     })
 
+    const result = await response.json()
 
+    setTimeout(() => {                                     /* Like time.sleep(), in ms, makes sure animation loads */
+        if (result.type.includes("invalid_username")) {
+            document.getElementById("info").textContent = result.message;
+            document.getElementById("info").classList.add("warning");
+        }
+        else if (result.type.includes("invalid_password")) {
+            document.getElementById("info").textContent = result.message;
+            document.getElementById("info").classList.add("warning");
+        }
+        else if (result.type.includes("login_success")) {
+            document.getElementById("info").textContent = result.message;
+            document.getElementById("info").classList.add("success");
+            setTimeout(() => {
+                window.location.href = "/dashboard";
+            }, 1000);
+        }
+    }, 10)
 })
