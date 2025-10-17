@@ -61,16 +61,16 @@ def signup():
         users_json = load_users()
 
         if not username or any(char in username for char in invalid_chars) or not (2 <= len(username) <= 20):
-            return jsonify({"message": "Invalid Username", "type": "invalid_username"})
+            return jsonify({"message": "Invalid Username: No spaces or Symbols Such As Brackets", "type": "invalid_username"})
 
         if username in users_json:
-            return jsonify({"message": "Username already exists", "type": "existing_username"})
+            return jsonify({"message": "Username Already Exists", "type": "existing_username"})
         
         if password1 != password2:
-            return jsonify({"message": "Passwords do not match", "type": "different_passwords"})
+            return jsonify({"message": "Passwords Do Not Match", "type": "different_passwords"})
         
         if len(password1) < 6 or not any(char.isdigit() for char in password1) or not any(char.isupper() for char in password1):
-            return jsonify({"message": "Password must be at least 6 characters long and contain: A number, An uppercase letter", "type": "invalid_password"})
+            return jsonify({"message": "Password Must Be At Least 6 Characters Long And Contain: A Number, An Uppercase Letter", "type": "invalid_password"})
         
         users_json[username] = {"password": password1}
         save_user(users_json)

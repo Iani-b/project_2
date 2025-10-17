@@ -6,7 +6,7 @@ signup_submit.addEventListener("click", async(event) => {
     document.getElementById("info").classList.remove("warning", "success");
     document.getElementById("info").textContent = "";
 
-    const signup_username = document.getElementById("signupUsername").value.trim();
+    const signup_username = document.getElementById("signupUsername").value;
     const signup_password1 = document.getElementById("signupPassword1").value;
     const signup_password2 = document.getElementById("signupPassword2").value;
 
@@ -46,4 +46,22 @@ signup_submit.addEventListener("click", async(event) => {
     }, 10)
 })
 
-const login_submit = document.getElementById("login_submit")
+const login_submit = document.getElementById("login_submit");
+
+login_submit.addEventListener("click", async(event) => {
+    event.preventDefault();
+
+    document.getElementById("info").classList.remove("warning", "success");
+    document.getElementById("info").textContent = "";
+
+    const login_username = document.getElementById("loginUsername").value;
+    const login_password = document.getElementById("loginPassword").value;
+
+    const response = await fetch("/login", {
+        method: "POST",
+        /*finish*/
+
+    })
+
+
+})
