@@ -1,1 +1,45 @@
-<h1>GAMESSS</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OCR Dice - Dashboard</title>
+    <link rel="stylesheet" href= "{{ url_for('static', filename='dashboard/dashboard.css') }}">
+</head>
+
+<body>
+
+    <div class="toolbar">
+        <h1>OCR Dice - Hello {{ session["username"] }}</h1>
+        <div class="toolbar_options">
+            <input type="button" value="Leaderboard" id="leaderboard_btn">
+            <input type="button" value="Log Out" id="logout_btn">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main_box_title">
+            <h2>Dashboard</h2>
+            <p id="info"></p>
+        </div>
+        <div class="main_box">
+            <div class="left_box">
+
+            </div>
+            <div class="centre_box">
+
+            </div>
+            <div class="right_box">
+
+            </div>
+        </div>
+        <div class="buttons">
+            <input type="button" class="play_btn" value="Play - Solo" id="play_solo_btn">
+            <input type="button" class="play_btn" value="Play - Versus" id="play_vs_btn">
+        </div>
+    </div>
+
+</body>
+
+<script src="{{ url_for('static', filename='dashboard/dashboard.js') }}"></script>
+
+</body>
