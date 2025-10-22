@@ -8,36 +8,36 @@
 
 <body>
 
-<div class="toolbar">
-    <h1>OCR Dice</h1>
-</div>
-
-<div class="container">
-    <div class="main_box_title">
-        <h2>Please Enter Your Details</h2>
-        <p id="info"></p>
+    <div class="toolbar">
+        <h1>OCR Dice</h1>
     </div>
-    <div class="main_box">
-        <div class="left_box">
-            <div id="signup_form" class="form">
-                <h3>Create Account</h3>
-                <input type="text" id="signupUsername" placeholder="Username">
-                <input type="password" id="signupPassword1" placeholder="Password">
-                <input type="password" id="signupPassword2" placeholder="Confirm Password">
-                <input type="button" value="Sign Up" id="signup_submit">
+
+    <div class="container">
+        <div class="main_box_title">
+            <h2>Please Enter Your Details</h2>
+            <p id="info"></p>
+        </div>
+        <div class="main_box">
+            <div class="left_box">
+                <div id="signup_form" class="form">
+                    <h3>Create Account</h3>
+                    <input type="text" id="signupUsername" placeholder="Username">
+                    <input type="password" id="signupPassword1" placeholder="Password">
+                    <input type="password" id="signupPassword2" placeholder="Confirm Password">
+                    <input type="button" value="Sign Up" id="signup_submit">
+                </div>
+            </div>
+            <div class="right_box">
+                <div id="login_form" class="form">
+                    <h3>Log In</h3>
+                    <input type="text" id="loginUsername" placeholder="Username">
+                    <input type="password" id="loginPassword" placeholder="Password">
+                    <input type="button" value="Log In" id="login_submit">
+                </div>
             </div>
         </div>
-        <div class="right_box">
-            <div id="login_form" class="form">
-                <h3>Log In</h3>
-                <input type="text" id="loginUsername" placeholder="Username">
-                <input type="password" id="loginPassword" placeholder="Password">
-                <input type="button" value="Log In" id="login_submit">
-            </div>
-        </div>
     </div>
-</div>
 
-<script src="{{ url_for('static', filename='home/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='home/home.js') }}"></script>
 
 </body>
