@@ -1,33 +1,17 @@
-const logout_btn = document.getElementById("logout_btn")
+function buttonRedirect(id, url) {
+    const button = document.getElementById(id)
 
-logout_btn.addEventListener("click", async(event) => {
-    event.preventDefault();
+    button.addEventListener("click", async(eventObject) => {
+        eventObject.preventDefault();
 
-    document.getElementById("info").classList.remove("warning", "success");
-    document.getElementById("info").textContent = "";
+        button.disabled = true;
+        await new Promise(timer => setTimeout(timer, 10));
+        button.disabled = false;
+        window.location.href = url;
+    }); 
+};
 
-    const response = await fetch("/dashboard/logout", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            "log_out": true
-        })
-    })
-
-    const result = await response.json()
-
-    setTimeout(() => {                                     /* Like time.sleep(), in ms, makes sure animation loads */
-        if (result.type.includes("success")) {
-         document.getElementById("info").textContent = result.message;
-         document.getElementById("info").classList.add("success");
-         setTimeout(() => {
-            window.location.href = "/";
-         }, 1000)
-        }    
-        else if (result.type.includes("error")) {
-            document.getElementById("info").textContent = result.message;
-            document.getElementById("info").classList.add("warning");
-            alert("Something Went Wrong")
-        }
-    }, 10)
-})
+buttonRedirect("leaderboard","/leaderboard");
+buttonRedirect("account_details","/account_details");
+buttonRedirect("create_account","/create_account");
+buttonRedirect("bottom_play_button","/play");

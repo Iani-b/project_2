@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, redirect, session
+from flask import Flask, render_template, jsonify, request, redirect
 import os
 import time
 import json
@@ -11,15 +11,10 @@ with open("config.json", "r") as config_json:
     config = json.load(config_json)
 
 app = Flask(__name__)
-app.secret_key = config["secret_key"]        #idc lol
 file_lock = threading.Lock()
 invalid_chars = ["{", "}", "[", "]", "/", "\\", "<", ">", "@", " ", ","]
 
 ##########################################################
-
-
-def logged_in():
-    return 'username' in session
 
 
 def load_users():
@@ -47,12 +42,12 @@ def save_user(users):
 @app.route("/")      ################-- dashboard --#######################
 def dashboard():
 
-    pass
+    return render_template("dashboard.html")
 
 @app.route("/leaderboard")   ###############-- leaderboard page --#########################
 def leaderboard():
     
-    pass
+    return render_template("leaderboard.html")
 
 
 ##############################################################

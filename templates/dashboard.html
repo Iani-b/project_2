@@ -8,7 +8,30 @@
 
 <body>
 
+    <div class="toolbar">
+        <h1>OCR Dice</h1>
+        <div class="toolbar_buttons">
+            <input type="button" id="leaderboard" value="Leaderboard">
+            <input type="button" id="account_details" value="Account Details">
+            <input type="button" id="create_account" value="Create Account">
+        </div>
+    </div>
 
+    <div class="container">
+        <h2 class="box_title">Welcome To OCR Dice</h2>
+        <p class="info" id="info"></p>
+        <div class="main_box">
+            <div class="left_box">
+                <h3>Intro</h3>
+                <p>In this game you will go up aginst your partner to see who will be victorious. Make sure you have an account before playing the game, and if you wish to see scores from other people you can always check the leaderboard. If you are lucky enough you might make it into the leaderboard! Furthermore, if you want to check the profile from another player you can go to account details and type their username, so you can get any relevant info.</p>
+            </div>
+            <div class="right_box">
+                <h3>Rules</h3>
+                <p>In this dice game, two players compete over five rounds. In each round, both roll two six-sided dice and add the total to their score. If the total is even, they earn an extra 10 points; if it is odd, they lose 5 points. Rolling a double grants an additional roll of one die, with its value added to their score. After five rounds, the player with the highest score wins. If there is a tie, each player rolls one die, and the higher roll wins!</p>
+            </div>
+            <input type="button" id="bottom_play_button" value="Play!">
+        </div>
+    </div>
 
     <script src="{{ url_for('static', filename='dashboard/dashboard.js') }}"></script>
 
