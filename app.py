@@ -30,9 +30,9 @@ def load_file(file_name):
         return {}
     
     
-def save_file(file_name, users):
+def save_file(file_name, data):
     with open(file_name, "w") as file_json:
-        json.dump(users, file_json, indent = 4)
+        json.dump(data, file_json, indent = 4)
 
 
 ##########################################################
