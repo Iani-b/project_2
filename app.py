@@ -15,39 +15,44 @@ invalid_chars = ["{", "}", "[", "]", "/", "\\", "<", ">", "@", " ", ","]
 ##########################################################
 
 
-def load_users():
-    if os.path.exists("users.json"):
+def load_file(file_name):
+    if os.path.exists(file_name):
         try:
-            with open("users.json", "r") as user_json:
-                return json.load(user_json)
+            with open(file_name, "r") as file_json:
+                return json.load(file_json)
         except json.JSONDecodeError:
-            print("Error decoding JSON from users.json")
+            print(f"Error decoding JSON from {file_name}")
             return {}
     else:
-        print("users.json not found")
-        with open("users.json", "w") as user_json:
-            json.dump({}, user_json, indent = 4)
+        print(f"{file_name} not found")
+        with open(file_name, "w") as file_json:
+            json.dump({}, file_json, indent = 4)
         return {}
     
     
-def save_user(users):
-    with open("users.json", "w") as user_json:
-        json.dump(users, user_json, indent = 4)
+def save_file(file_name, users):
+    with open(file_name, "w") as file_json:
+        json.dump(users, file_json, indent = 4)
 
 
 ##########################################################
 
-@app.route("/") ###
+@app.route("/") #-- Dashboard --#
 def dashboard():
 
     return render_template("dashboard.html")
 
-@app.route("/leaderboard") ###
+@app.route("/leaderboard") #-- Leaderboards --#
 def leaderboard():
-    
-    return render_template("leaderboard.html")
 
-@app.route("/create_account") ###
+    with file_lock:
+        leaderboard_json = load_file("leaderboard.json")
+
+    leaderboard = sorted(leaderboard_json, key=lambda score_size: score_size["score"], reverse=True)
+
+    return render_template("leaderboard.html", leaderboard=leaderboard)
+
+@app.route("/create_account") #-- Creating Account --#
 def create_account():
 
     return render_template("create_account.html")
@@ -62,7 +67,7 @@ def submit_create_account():
     date_of_birth = form_submission.get("date_of_birth")
 
     with file_lock:
-        users_json = load_users()
+        users_json = load_file("users.json")
 
         if not username or any(char in username for char in invalid_chars) or not (2 <= len(username) <= 20):
             return jsonify({"message": "Username Must Be 2 To 20 Characters Long And Contain: No Spaces And No Symbols", "type": "warning"})
@@ -80,7 +85,7 @@ def submit_create_account():
             return jsonify({"message": "Invalid Date Of Birth", "type": "warning"})
        
         users_json[username] = {"password": password1, "date_of_birth": date_of_birth}
-        save_user(users_json)
+        save_file("users.json", users_json)
 
     return jsonify({"message": "Signup successful", "type": "success"})
 

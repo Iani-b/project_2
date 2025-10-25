@@ -8,7 +8,37 @@
 
 <body>
 
-    <h1>leaderboard yahoo</h1>
+    <div class="toolbar">
+        <h1>OCR Dice - Leaderboard</h1>
+        <div class="toolbar_buttons">
+            <input type="button" id="dashboard" value="Dashboard">
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="box_title">Current Leaderboard</h2>
+        <div class="main_box">
+            <table id="leaderboard_table" class="centre_box">
+                <caption>Top Five Players</caption>
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for details in leaderboard %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ details["username"] }}</td>
+                        <td>{{ details["score"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <script src="{{ url_for('static', filename='leaderboard/leaderboard.js') }}"></script>
 
