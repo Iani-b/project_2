@@ -37,6 +37,8 @@ find_user_form.addEventListener("submit", async(eventObject) => {
     else if (result.type.includes("warning")) {
         document.getElementById("info").classList.add("warning");
         document.getElementById("info").textContent = result.message;
-    }
-})
+    };
+});
+
+buttonRedirect("dashboard", "/")
 
