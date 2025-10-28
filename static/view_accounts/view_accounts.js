@@ -35,8 +35,12 @@ find_user_form.addEventListener("submit", async(eventObject) => {
         document.getElementById("losses").textContent = result.losses;
     }
     else if (result.type.includes("warning")) {
-        document.getElementById("info").classList.add("warning");
         document.getElementById("info").textContent = result.message;
+        document.getElementById("info").classList.add("warning");
+        document.getElementById("date_of_birth").textContent = "N/A";
+        document.getElementById("last_game_result").textContent = "N/A";
+        document.getElementById("wins").textContent = "N/A";
+        document.getElementById("losses").textContent = "N/A";
     };
 });
 
