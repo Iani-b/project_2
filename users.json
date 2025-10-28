@@ -5,7 +5,9 @@
     },
     "abc": {
         "password": ".8y@r~x\".P6hwQc",
-        "date_of_birth": "2000-01-01",
-        "wins": 10
+        "date_of_birth": "1984-08-04",
+        "wins": 61,
+        "losses": 67,
+        "last_game": "Won with 41 points"
     }
 }
