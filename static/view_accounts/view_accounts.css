@@ -1,0 +1,8 @@
+.info {
+    opacity: 0;
+}
+
+.info.warning {
+    color: red;
+    opacity: 100;
+}

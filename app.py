@@ -86,8 +86,32 @@ def submit_create_account():
        
         users_json[username] = {"password": password1, "date_of_birth": date_of_birth}
         save_file("users.json", users_json)
-
+    
     return jsonify({"message": "Signup successful", "type": "success"})
+
+@app.route("/view_accounts") #-- View player details --#
+def view_accounts():
+
+    return render_template("view_accounts.html")
+
+@app.route("/view_accounts/find", methods = ["POST"])
+def view_accounts_find():
+
+    username_submission = request.get_json()
+    needed_username = username_submission.get("username")
+
+    with file_lock:
+        users_json = load_file("users.json")
+
+        if needed_username in users_json:
+            user_data = users_json.get(needed_username)
+            return jsonify({"date_of_birth": f"Date Of Birth: {user_data.get("date_of_birth", "N/A")}",
+                            "last_game": f"Last Game's Result: {user_data.get("last_game", "N/A")}",
+                            "wins": f"Wins: {user_data.get("wins", "N/A")}",
+                            "losses": f"Losses: {user_data.get("losses", "N/A")}",
+                            "type": "success"})
+        
+    return jsonify({"message": "The Desired User Does Not Exist", "type": "warning"})
 
 ##############################################################
 

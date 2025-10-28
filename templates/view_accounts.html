@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OCR Dice - Find Players</title>
+    <link rel="stylesheet" href= "{{ url_for('static', filename='view_accounts/view_accounts.css') }}">
+</head>
+
+<body>
+
+    <div class="toolbar">
+        <h1>OCR Dice - Find Players</h1>
+        <div class="toolbar_buttons">
+            <input type="button" id="dashboard" value="Dashboard">
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="box_title">View A Player's Details</h2>
+        <div class="main_box">
+            <div class="top_box">
+                <h3>Enter Username</h3>
+                <form id="find_user_form">
+                    <input type="text" placeholder="Username" id="viewAcc_username">
+                    <input type="submit" id="find_button" value="Find">
+                </form>
+                <p id="info" class="info">hey</p>
+            </div>
+            <div class="bottom_box">
+                <p id="date_of_birth">date of birth</p>
+                <p id="last_game_result">last result</p>
+                <p id="wins">wins</p>
+                <p id="losses">losses</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='view_accounts/view_accounts.js') }}"></script>
+
+</body>
+</html>
