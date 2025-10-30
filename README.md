@@ -9,6 +9,6 @@
 
 - You will need to install Flask for python using `pip install Flask`
 - Run app.py
-- Visit the address the website is running on, usually `http://127.0.0.1:5000`
+- Visit the address the website is running on
 - Yep
 
