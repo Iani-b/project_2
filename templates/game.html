@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OCR Dice</title>
+    <link rel="stylesheet" href= "{{ url_for('static', filename='game/game.css') }}">
+</head>
+
+<body>
+
+    <div class="toolbar">
+        <div class="player_1_info">
+            <h3>A</h3>
+        </div>
+        <div class="player_2_info">
+            <h3>B</h3>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="centre_box">
+            <div class="left_dice">
+                <img src="content/dice/dice_1.png">
+            </div>
+            <div class="right_dice">
+                <img src="content/dice/dice_2.png">
+            </div>
+        </div>
+        <div class="bottom_box">
+            <input type="button" id="roll_button" value="Roll">
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='game/game.js') }}"></script>
+
+</body>
+</html>

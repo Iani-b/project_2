@@ -113,6 +113,16 @@ def view_accounts_find():
         
     return jsonify({"message": "The Desired User Does Not Exist", "type": "warning"})
 
+@app.route("/game")
+def game():
+
+    return render_template("game.html")
+
+@app.route("/game/round", methods = ["POST"])
+def game_round():
+
+    pass
+
 ##############################################################
 
 if __name__ == "__main__":
