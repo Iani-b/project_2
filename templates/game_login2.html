@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OCR Dice - Player 2 Login</title>
+    <link rel="stylesheet" href= "{{ url_for('static', filename='game_login/game_login2/game_login2.css') }}">
+</head>
+
+<body>
+
+    <div class="toolbar">
+        <h1>OCR Dice - Game Log In</h1>
+        <div class="toolbar_buttons">
+            <input type="button" id="dashboard" value="Dashboard">
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="box_title">Enter Your Details Player 2</h2>
+        <p class="info" id="info"></p>
+        <div class="main_box">
+            <form class="centre_box" id="create_account_form">
+                <input type="text" placeholder="Username" id="createAcc_username">
+                <input type="password" placeholder="Password" id="createAcc_password1">
+                <input type="submit" id="submit_button" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='game_logins/game_login2/game_login2.js') }}"></script>
+
+</body>
+</html>

@@ -14,4 +14,4 @@ function buttonRedirect(id, url) {
 buttonRedirect("leaderboard","/leaderboard");
 buttonRedirect("view_accounts","/view_accounts");
 buttonRedirect("create_account","/create_account");
-buttonRedirect("bottom_play_button","/game");
+buttonRedirect("bottom_play_button","/game_login1");

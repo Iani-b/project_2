@@ -113,6 +113,11 @@ def view_accounts_find():
         
     return jsonify({"message": "The Desired User Does Not Exist", "type": "warning"})
 
+@app.route("/game_login1")
+def game_login1():
+
+    return render_template("game_login1.html")
+
 @app.route("/game")
 def game():
 
